@@ -72,7 +72,7 @@ func getMax(db *gorm.DB, input string) []CSV_Reader.Farm {
 }
 
 func main() {
-	//db := csvMigrateToPostgreSql()
+	csvMigrateToPostgreSql()
 	db := dbConnection()
 	app := fiber.New()
 
