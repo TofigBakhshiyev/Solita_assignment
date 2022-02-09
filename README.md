@@ -15,6 +15,7 @@
 - ```go run main.go```
 
 ### Server is running
+- ```farms```
 - ```farms/min/:sensortype```
 - ```farms/max/:sensortype```
 
