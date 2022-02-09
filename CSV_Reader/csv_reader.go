@@ -2,8 +2,6 @@ package CSV_Reader
 
 import (
 	"encoding/csv"
-	"encoding/json"
-	"fmt"
 	"io"
 	"os"
 	"strconv"
@@ -11,15 +9,16 @@ import (
 )
 
 type Farm struct {
-	Location   string    `json:"location"`
-	Datetime   time.Time `json:"datetime"`
-	SensorType string    `json:"sensorType"`
-	Value      float64   `json:"value"`
+	Location   string
+	Datetime   time.Time
+	SensorType string
+	Value      float64
 }
 
 // CSV parsing and validation
-func ReadCsvFile(filePath string) []string {
-	var listFarm []string
+func ReadCsvFile( /* db *sql.DB, */ filePath string) []Farm {
+
+	var listFarm []Farm
 	f, _ := os.Open(filePath)
 
 	go func(file io.Reader) {
@@ -56,16 +55,12 @@ func ReadCsvFile(filePath string) []string {
 					}
 				}
 				if checkFarm != (*farm) {
-					b, err := json.Marshal(farm)
-					if err != nil {
-						fmt.Printf("Error: %s", err)
-						return
-					}
-					listFarm = append(listFarm, string(b))
+					listFarm = append(listFarm, *farm)
 				}
 			}
 		}
 	}(f)
 	time.Sleep(240 * time.Millisecond)
+
 	return listFarm
 }
