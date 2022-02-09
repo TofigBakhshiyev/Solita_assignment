@@ -20,12 +20,7 @@
 - ```farms/max/:sensortype```
 
 ### Requirements for PostgrSQL
-```docker run -d -p 5432:5432 --name postgresql_test -e POSTGRES_PASSWORD=test postgres```
-```docker exec -it postgresql_test bash```
-```psql -U postgres```
-```CREATE DATABASE solitadb```
-
-    ```CREATE TABLE farms (ID UUID DEFAULT gen_random_uuid ()   PRIMARY KEY, Location VARCHAR ( 50 ) UNIQUE NOT NULL, Datetime timestamp default NULL,
-    SensorType VARCHAR ( 50 ) UNIQUE NOT NULL,
-    Value float
-    );```
+- ```docker run -d -p 5432:5432 --name postgresql_test -e POSTGRES_PASSWORD=test postgres```
+- ```docker exec -it postgresql_test bash```
+- ```psql -U postgres```
+- ```CREATE DATABASE solitadb```
